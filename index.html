@@ -19,6 +19,7 @@
   <link rel="icon" sizes="192x192" href="../../../images/webrtc-icon-192x192.png">
   <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/main.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.microphone.min.js"></script>
 
 </head>
@@ -34,12 +35,10 @@
   
     <div id="errorMsg"></div>
 
-    <p class="warning"><strong>Warning:</strong> if you're not using headphones, pressing play will cause feedback.</p>
-
   <div id="mictest"></div>
   <div id="waveform"></div>
   <script>
-    var wavesurfer = WaveSurfer.create({ container: '#waveform', waveColor: 'violet' });
+    var wavesurfer = WaveSurfer.create({ container: '#waveform', waveColor: 'red' });
 
 var microphone = Object.create(WaveSurfer.Microphone);
 

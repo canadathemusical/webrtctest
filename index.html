@@ -4,11 +4,11 @@
 <head>
 
   <meta charset="utf-8">
-  <meta name="description" content="WebRTC code samples">
+  <meta name="description" content="MDLIVE Connect Test">
   <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
-  <meta itemprop="description" content="Test mwebcam and microphone for WebRTC consultations.">
+  <meta itemprop="description" content="Test webcam and microphone for MDLIVE Connect consultations.">
   <meta itemprop="image" content="https://www.mdlive.com/wp-content/themes/MDLive/images/md-live-logo@2.png">
-  <meta itemprop="name" content="WebRTC test">
+  <meta itemprop="name" content="MDLIVE Connect test">
   <meta name="mobile-web-app-capable" content="yes">
   <meta id="theme-color" name="theme-color" content="#ffffff">
 
@@ -36,15 +36,8 @@
 
     <p class="warning"><strong>Warning:</strong> if you're not using headphones, pressing play will cause feedback.</p>
 
-  
+  <div id="mictest"></div>
   <div id="waveform"></div>
-
-
-
-  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-  <script src="js/common.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/lib/ga.js"></script>
   <script>
     var wavesurfer = WaveSurfer.create({ container: '#waveform', waveColor: 'violet' });
 
@@ -66,6 +59,15 @@ microphone.on('deviceError', function(code) {
   <button class="btn btn-primary btn-lg" onclick="microphone.start()">
   Start the mic
 </button>
+  </div>
+
+
+
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/lib/ga.js"></script>
+  
 </p>
 
 </body>

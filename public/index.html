@@ -1,73 +1,67 @@
 <!DOCTYPE html>
-
 <html>
+
 <head>
-
-  <meta charset="utf-8">
-  <meta name="description" content="MDLIVE Connect Test">
-  <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
-  <meta itemprop="description" content="Test webcam and microphone for MDLIVE Connect consultations.">
-  <meta itemprop="image" content="https://www.mdlive.com/wp-content/themes/MDLive/images/md-live-logo@2.png">
-  <meta itemprop="name" content="MDLIVE Connect test">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta id="theme-color" name="theme-color" content="#ffffff">
-
-  <base target="_blank">
-
-  <title>WebRTC Test</title>
-
-  <link rel="icon" sizes="192x192" href="../../../images/webrtc-icon-192x192.png">
-  <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="css/main.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.microphone.min.js"></script>
-
+    <meta charset="utf-8">
+    <meta name="description" content="MDLIVE Connect Test">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta itemprop="description" content="Test webcam and microphone for MDLIVE Connect consultations.">
+    <meta itemprop="image" content="https://www.mdlive.com/wp-content/themes/MDLive/images/md-live-logo@2.png">
+    <meta itemprop="name" content="MDLIVE Connect test">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+    <base target="_blank">
+    <title>WebRTC Test</title>
+    <link rel="icon" sizes="192x192" href="../../../images/webrtc-icon-192x192.png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.microphone.min.js"></script>
 </head>
 
 <body>
+    <div id="container">
+        <h1>Test your webcam and microphone.</h1>
+        <h2>Camera</h2>
+        <p>You should see yourself in the square below. You may have click "allow" in the box which pops up in the upper left (Mozilla and Chrome) or bottom (Microsoft Edge) of your browser.</p>
+        <video id="gum-local" autoplay></video>
+        <div id="errorMsg"></div>
+        <h2>Microphone</h2>
+        <p>To test your microphone, simply make some sound. You may have to click "allow" just as you did for your camera. If your microphone is recognized by the browser, you should see a red waveform in the grey box below.</p>
+        <div id="mictest"></div>
+        <div id="waveform"></div>
+        <script>
+        var wavesurfer = WaveSurfer.create({ container: '#waveform', waveColor: 'red', fillParent: 'false' });
 
-  <div id="container">
-
-    <h1>Test your webcam and microphone.</h1>
-
-    <video id="gum-local" autoplay></video>
-    
-  
-    <div id="errorMsg"></div>
-
-  <div id="mictest"></div>
-  <div id="waveform"></div>
-  <script>
-    var wavesurfer = WaveSurfer.create({ container: '#waveform', waveColor: 'red' });
-
-var microphone = Object.create(WaveSurfer.Microphone);
-
-microphone.init({
-    wavesurfer: wavesurfer
-});
-
-microphone.on('deviceReady', function(stream) {
-    console.log('Device ready!', stream);
-});
-microphone.on('deviceError', function(code) {
-    console.warn('Device error: ' + code);
-});
-  </script>
-  
-<p align="center">
-  <button class="btn btn-primary btn-lg" onclick="microphone.start()">
-  Start the mic
-</button>
-  </div>
+        var microphone = Object.create(WaveSurfer.Microphone);
 
 
 
-  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-  <script src="js/common.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/lib/ga.js"></script>
-  
-</p>
+        microphone.init({
+            wavesurfer: wavesurfer
+        });
 
+        microphone.start();
+
+        microphone.on('deviceReady', function(stream) {
+            console.log('Device ready!', stream);
+        });
+        microphone.on('deviceError', function(code) {
+            console.warn('Device error: ' + code);
+        });
+        </script>
+        
+        <p align="center">
+            <!-- <button class="btn btn-primary btn-lg" onclick="microphone.start()">
+                Start the mic
+            </button> -->
+    </div>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/lib/ga.js"></script>
+    </p>
 </body>
+
 </html>
